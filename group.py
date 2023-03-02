@@ -7,19 +7,19 @@ class Group:
         self.numMembers = len(self.members)
 
     # Sets the project description given a description
-    def setProjectDesc(self, projDesc):
+    def SetProjectDesc(self, projDesc):
         self.projectDesc = projDesc
 
     # Returns the project description
-    def getProjectDesc(self):
+    def GetProjectDesc(self):
         return self.projectDesc
 
     # Adds member to the member array
-    def addMember(self, newMember):
+    def AddMember(self, newMember):
         self.members.append(newMember)
 
     # Returns a member given the index
-    def getMember(self, memberPos):
+    def GetMember(self, memberPos):
         return self.members[memberPos]
 
 # Run everytime the script is called
