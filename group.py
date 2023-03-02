@@ -1,3 +1,4 @@
+import Member
 
 class Group:
     # Init class
