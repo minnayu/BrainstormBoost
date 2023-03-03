@@ -2,10 +2,10 @@ import Member
 
 class Group:
     # Init class
-    def __init__(self):
-        self.projectDesc = ''
-        self.members = []
-        self.numMembers = len(self.members)
+    def __init__(self, projectDesc='', members=[], numMembers=0):
+        self.projectDesc = projectDesc
+        self.members = members
+        self.numMembers = numMembers
 
     # Sets the project description given a description
     def SetProjectDesc(self, projDesc):
