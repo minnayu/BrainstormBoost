@@ -1,47 +1,46 @@
 # Member Class
+# Holds each members' interests and skills to later create a custom prompt
+
 class Member:
-    # attributes of a Member: name, skills, interests 
-    name = ""
-    global skills
-    skills = []
-    global interests
-    interests = []
+    # Constructor
+    def __init__(self, name="", skills=[], interests=[]):
+        self.name = name
+        self.skills = skills
+        self.interests = interests
 
     # Gets the Member's name
-    def getName(self):
-        return name
-
-    # Sets the Member's name
-    def setName(self, nameInput):
-        global name
-        name = nameInput
+    def SetName(self, name):
+        self.name = name
 
     # Gets the Member's interests
-    def getInterests(self):
-        return interests
+    def AddInterest(self, interest): 
+        self.interests += [str(interest)]
 
-    # Sets the Member's interests
-    def addInterests(self, interestsInput):
-        global interests
-        interests += interestsInput
+    def AddSkill(self, skill):
+        self.skills += [str(skill)]
 
-    # Gets the Member's skills
-    def getSkills(self):
-        return skills
-
-    # Sets the Member's skills
-    def addSkills(self, skillsInput):
-        global skills
-        skills += skillsInput
+# '''
+# Testing Member class
+if __name__ == '__main__':
 
 
-# testing Member class
-member1 = Member()
+    print("member1's attributes")
+    member1 = Member("Luis Rivas")
+    print("Name: ", member1.name)
+    print("Interests: ", member1.interests)
+    print("Skills: ", member1.skills)
 
-member1.setName("test name")
-member1.addInterests(["test interest 1", "test interest 2"])
-member1.addSkills(["test skill 1", "test skill 2"])
+    member1.AddInterest("Data Science")
+    member1.AddInterest("Computer Science")
+    member1.AddInterest("Fitness")
+    member1.AddSkill("C++")
+    member1.AddSkill("Python")
+    member1.AddSkill("Machine Learning")
+    member1.AddSkill("SQL")
 
-print("Name: ", member1.getName())
-print("Interests: ", member1.getInterests())
-print("Skills: ", member1.getSkills())
+    member1.SetName("Gilberto Arellano")
+    print("Name: ", member1.name)
+    print("Interests: ", member1.interests[0])
+    print("Skills: ", member1.skills)
+
+# '''
