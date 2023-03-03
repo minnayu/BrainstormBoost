@@ -7,13 +7,9 @@ This program is designed to assist college students who are struggling to come u
 $PROJECT_ROOT
 │   # Source Code 
 ├── src/ 
-|
 │   # Software Documentation 
 ├── doc/ 
-|
-|   # License
 ├── LICENSE
-│    
 └── README
 ```
 
