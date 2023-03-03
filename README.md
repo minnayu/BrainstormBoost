@@ -3,7 +3,7 @@
 This program is designed to assist college students who are struggling to come up with ideas for group projects in their classes. By utilizing the OpenAI ChatGPT API, the program generates project ideas based on the skills and interests of each group member, as well as a provided prompt.
 
 ## Project Structure
-
+```
 $PROJECT_ROOT
 │   # Source Code 
 ├── src/ 
@@ -15,6 +15,7 @@ $PROJECT_ROOT
 ├── LICENSE
 │    
 └── README
+```
 
 ## Contributing
 
