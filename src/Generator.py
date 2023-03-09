@@ -1,5 +1,7 @@
+from Member import Member
+from Group import Group
+from Idea import Idea
 import openai
-import Group
 
 openai.ChatCompletion.create(
   model="gpt-3.5-turbo",
@@ -21,10 +23,10 @@ openai.ChatCompletion.create(
 # Class Generator
 class Generator:
     # initializes Member's attributes (name, skills, interests)
-    def __init__(self, Group = Group()):
+    def __init__(self, group = Group()):
+        self.group = group # FIX USAGE OF GROUP IN THIS CLASS
         self.prompt = "Crate a list of project ideas. " #improve prompt later
         self.ideas = []
-        self.group = Group() # FIX USAGE OF GROUP IN THIS CLASS
 
     def getPrompt(self):
         return self.prompt
@@ -43,3 +45,13 @@ class Generator:
     def generate(self):
         # send to chatGPT here
         pass
+
+# Run everytime the script is called
+if __name__ == '__main__':
+    '''
+    testGroup = Group("Data Science Project")
+    testGroup.AddMember(Member("Gilberto Arellano", ["C++", "Data Structures"], ["Video Games", "Soccer"]))
+    testGroup.AddMember(Member("Minna Yu", ["Web Design"], ["Data Science"]))
+    '''
+
+    testGenerator = Generator()

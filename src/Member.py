@@ -3,10 +3,18 @@
 
 class Member:
     # Constructor
-    def __init__(self, name="", skills=[], interests=[]):
+    def __init__(self, name="", skills=[""], interests=[""]):
         self.name = name
         self.skills = skills
         self.interests = interests
+
+#    def __call__(self):
+#        return print(self.name)
+    def __eq__(self, Member2):
+        if (self.name == Member2.name):
+            return True
+        else:
+            return False
 
     # Gets the Member's name
     def SetName(self, name):
@@ -19,13 +27,13 @@ class Member:
     def AddSkill(self, skill):
         self.skills += [str(skill)]
 
-# '''
+#'''
 # Testing Member class
 if __name__ == '__main__':
 
 
     print("member1's attributes")
-    member1 = Member("Luis Rivas")
+    member1 = Member("Luis Rivas", ["Skill1", "Skill2"], ["Interest1", "Interest2"])
     print("Name: ", member1.name)
     print("Interests: ", member1.interests)
     print("Skills: ", member1.skills)
@@ -43,4 +51,4 @@ if __name__ == '__main__':
     print("Interests: ", member1.interests[0])
     print("Skills: ", member1.skills)
 
-# '''
+ #'''
