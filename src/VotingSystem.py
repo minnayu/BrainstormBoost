@@ -1,11 +1,11 @@
-from Idea import Idea
+from Generator import Generator
 
 class VotingSystem:
     # Init class
     # ideas is a list of Idea objects passed in from Generator
-    def __init__(self, numVotes=0, ideas=[]):
+    def __init__(self, numVotes=0, ideas= userGenerator.ideas[]):
         self.numVotes = numVotes
-        self.ideas = ideas
+        self.ideas = generator.ideas[]
 
     # TODO: Determine algorithm to decide winning idea
     def GetWinningIdeas(self):
