@@ -7,14 +7,6 @@ class Group:
         self.members = members
         self.numMembers = numMembers
 
-    # Sets the project description given a description
-    def SetProjectDesc(self, projDesc):
-        self.projectDesc = projDesc
-
-    # Returns the project description
-    def GetProjectDesc(self):
-        return self.projectDesc
-
     # Adds member to the member array
     def AddMember(self, newMember):
         # Checks if the first member is null to replace it with an actual member object
@@ -52,7 +44,7 @@ class Group:
 if __name__ == '__main__':
     testGroup = Group()
 
-    print("Test Group's Project:", testGroup.GetProjectDesc())
+    print("Test Group's Project:", testGroup.projectDesc)
     print("Test Group's Members:", testGroup.members[0]) # Null member object
 
     member1 = Member("Gilberto Arellano", ["C++", "Data Structures"], ["Video Games", "Soccer"])

@@ -16,10 +16,6 @@ class Member:
         else:
             return False
 
-    # Gets the Member's name
-    def SetName(self, name):
-        self.name = name
-
     # Gets the Member's interests
     def AddInterest(self, interest): 
         self.interests += [str(interest)]
@@ -46,7 +42,7 @@ if __name__ == '__main__':
     member1.AddSkill("Machine Learning")
     member1.AddSkill("SQL")
 
-    member1.SetName("Gilberto Arellano")
+    member1.name = "Gilberto Arellano"
     print("Name: ", member1.name)
     print("Interests: ", member1.interests[0])
     print("Skills: ", member1.skills)
