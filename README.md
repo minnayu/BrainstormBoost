@@ -17,6 +17,10 @@ $PROJECT_ROOT
 
 If you would like to contribute to this project, please fork the repository and create a new branch for your changes. Once your changes are complete, submit a pull request.
 
+## Trello Board:
+
+https://trello.com/b/FAYr6PvS/brainstorm-boost
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
