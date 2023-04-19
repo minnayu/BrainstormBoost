@@ -1,15 +1,15 @@
-##### HOW TO RUN SCRIPTS IN DEV MODE:
-### First start backend server, then frontend
+# HOW TO RUN SCRIPTS IN DEV MODE:
+### First starts backend server, then frontend
 
-### To run python backend:
-cd flask-server
-source venv/bin/activate
-python3 server.py
+## To run python backend:
+#### cd flask-server
+#### source venv/bin/activate
+#### python3 server.py
 
-# Open new terminal
+### Open new terminal
 
-### To run React frontend:
-cd client
-npm start
+## To run React frontend:
+#### cd client
+#### npm start
 
-# output should be in localhost:3000
+##### output should be in localhost:3000
