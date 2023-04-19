@@ -34,7 +34,7 @@ def members():
 
 @app.route("/add_members")
 def add_members():
-    return {"members": ["test1", "test2","test3"]}
+    return {"members": ["pleep", "pleep","pleep"]}
 
 if __name__ == "__main__":
     app.run(debug=True)
