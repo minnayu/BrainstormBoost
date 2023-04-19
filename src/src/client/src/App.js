@@ -1,32 +1,23 @@
-import React, { useState, useEffect } from 'react'
+import React from "react";
+import "./App.css";
+import About from "./About";
+import Home from "./Home";
+import Members from "./Members"
+import {Routes, Route, Link, BrowserRouter} from "react-router-dom";
+import NavBar from "./NavBar";
 
 function App() {
-  // data: variable 
-  // setData: function to set variable
-  const [data, setData] = useState([{}])
-
-  useEffect(() => {
-    fetch("/members").then(
-      res => res.json()
-    ).then(
-      data => {
-        setData(data)
-        console.log(data)
-      }
-    )
-  }, [])
-
   return (
-    <div>
-      {(typeof data.members === 'undefined') ? (
-        <p> Loading...</p>
-      ) : (
-        data.members.map((member, i) => (
-          <p key={i}>{member}</p>
-        ))
-      )}
+    
+    <div className="App">
+      <NavBar/>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/about" element={<About/>}/>
+        <Route path="/members" element={<Members/>}/>
+      </Routes>
     </div>
-  )
+  );
 }
 
 export default App
