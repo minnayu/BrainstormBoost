@@ -11,5 +11,3 @@
 ## To run React frontend:
 #### cd client
 #### npm start
-
-##### output should be in localhost:3000
