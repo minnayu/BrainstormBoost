@@ -9,9 +9,8 @@ import NavBar from "./NavBar";
 function App() {
   return (
     
-    <div className="App">
+    <div>
       <NavBar/>
-      <h1>-</h1>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/about" element={<About/>}/>
