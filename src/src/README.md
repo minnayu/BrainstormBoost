@@ -4,6 +4,7 @@
 ## To run python backend:
 #### cd flask-server
 #### source venv/bin/activate
+#### (IF PREVIOUS STEP DIDN'T WORK) pip3 install Flask
 #### python3 server.py
 
 ### Open new terminal
