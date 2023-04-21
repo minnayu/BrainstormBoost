@@ -9,7 +9,7 @@ function NavBar() {
                     <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page"><Link to="/">Home</Link></a>
                     <a class="nav-link"><Link to="/about">About</Link></a>
-                    <a class="nav-link"><Link to="/members">Members</Link></a>
+                    <a class="nav-link"><Link to="/generator">Generator</Link></a>
                     </div>
                 </div>
             </div>
