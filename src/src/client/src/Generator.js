@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Member from "./Member"
 
 function Generator() {
-  const [numMembers, setNumMembers] = useState(0)
-  const MemberInputs = []
+  const [numMembers, setNumMembers] = useState(0);
+  const [memberInfo, setMemberInfo] = useState([]);
 
   const options = [
     {value: 1, label: "1"},
@@ -15,35 +15,62 @@ function Generator() {
     {value: 7, label: "7"},
     {value: 8, label: "8"},
     {value: 9, label: "9"}
-  ]
+  ];
 
   const getNumMembersDisplay = () => {
     if (numMembers) {
       return numMembers;
     }
-  }
+  };
 
   const onDropdownClick = (option) => {
-    setNumMembers(option.value)
-    // console.log(MemberInputs)
+    const newMemberInfo = Array.from({length: option.value}, () => ({
+      name: "",
+      skills: ""
+    }));
+    setNumMembers(option.value);
+    setMemberInfo(newMemberInfo);
+  };
+
+  function handleMemberSubmit () {
+    console.log("Member infos:", memberInfo);
   }
 
-  for (let i = 0; i < numMembers; i++) {
-    MemberInputs.push(<Member num={i}/>)
-  }
-  console.log(MemberInputs)
+  const memberInputs = Array.from({length: numMembers}, (_, i) => (
+    <Member
+      key={i}
+      num={i+1}
+      memberInfo={memberInfo[i]}
+      setMemberInfo={(newInfo) => {
+        setMemberInfo((prevState) => {
+          const newState = [...prevState];
+          newState[i] = newInfo;
+          return newState;
+        });
+      }}
+    />
+  ));
+
+  fetch('/api/members', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ memberInfo: memberInfo })
+  })
+  .then(response => {
+    if (response.ok) {
+      console.log('Member info sent to server');
+    } else {
+      console.error('Error sending member info to server');
+    }
+  })
+  .catch(error => {
+    console.error('Error sending member info to server:', error);
+  });
+  
 
   return (
-      // sample code to get data python code
-    // <div>
-    //   {(typeof data.members === 'undefined') ? (
-    //     <p class="text-center"> Loading...</p>
-    //   ) : (
-    //     data.members.map((member, i) => (
-    //       <p class="text-center" key={i}>{member}</p>
-    //     ))
-    //   )}
-    // </div>
     <div>
       <p class="text-start">Select number of members:</p>
       <div class="dropdown">
@@ -59,16 +86,11 @@ function Generator() {
       </div>
 
       <div class="container-sm" class="d-flex p-2 grid gap-3 flex-wrap">
-        {MemberInputs.map(Member)}
-        
+        {memberInputs}
       </div>
+      <button type="button" class="btn btn-primary" onClick={handleMemberSubmit}>Submit Member Info</button>
     </div>
   )
 }
-// pass in data values & updater funtion to child 
-// updater function: once changes in child, its gonna run & update parent
-// updater function changes info outside of child
-// login page sandbox 
 
-
-export default Generator
+export default Generator;
