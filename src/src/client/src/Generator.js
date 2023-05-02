@@ -4,6 +4,8 @@ import Member from "./Member"
 function Generator() {
   const [numMembers, setNumMembers] = useState(0);
   const [memberInfo, setMemberInfo] = useState([]);
+  const [projectDescription, setProjectDescription] = useState('');
+  const [generatedIdeas, setGeneratedIdeas] = useState([])
 
   const options = [
     {value: 1, label: "1"},
@@ -32,7 +34,8 @@ function Generator() {
     setMemberInfo(newMemberInfo);
   };
 
-  function handleMemberSubmit () {
+  function handleSubmitInfo () {
+    console.log("Project Description:", projectDescription);
     console.log("Member infos:", memberInfo);
   }
 
@@ -56,11 +59,14 @@ function Generator() {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ memberInfo: memberInfo })
+    body: JSON.stringify({ projectDescription: projectDescription, memberInfo: memberInfo })
   })
   .then(response => {
     if (response.ok) {
-      console.log('Member info sent to server');
+      response.json().then(data => {
+        // console.log('Ideas generated:', data.ideas);
+        setGeneratedIdeas(data.ideas)
+      });
     } else {
       console.error('Error sending member info to server');
     }
@@ -72,6 +78,13 @@ function Generator() {
 
   return (
     <div>
+      <h1 class="text-center">Project Generator</h1>
+      <div class="p-2">
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{height: "100px"}} value={projectDescription} onChange={(e) => setProjectDescription(e.target.value)}></textarea>
+          <label for="floatingTextarea2">Project Description</label>
+        </div>
+      </div>
       <p class="text-start">Select number of members:</p>
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -88,7 +101,11 @@ function Generator() {
       <div class="container-sm" class="d-flex p-2 grid gap-3 flex-wrap">
         {memberInputs}
       </div>
-      <button type="button" class="btn btn-primary" onClick={handleMemberSubmit}>Submit Member Info</button>
+      <button type="button" class="btn btn-primary" onClick={handleSubmitInfo}>Submit Info</button>
+            
+      {generatedIdeas.map((idea, index) => (
+        <h2 key={index}>{idea}</h2>
+      ))}
     </div>
   )
 }

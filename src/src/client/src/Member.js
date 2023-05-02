@@ -51,7 +51,7 @@ function Member( { num, memberInfo, setMemberInfo } ) {
                     </div>
                     <div class="form-floating">
                         <textarea class="form-control" placeholder="Input member skills" id="floatingTextarea2" style={{height: "100px"}} onChange={(e) => update(e.target.value, "skills")} value={memberValues.skills}></textarea>
-                        <label for="floatingTextarea2">Member Skills</label>
+                        <label for="floatingTextarea2">Member Skills/Interests</label>
                     </div>
                 </div>
             </div>
