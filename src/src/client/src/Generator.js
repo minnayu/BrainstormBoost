@@ -126,7 +126,7 @@ function Generator() {
       <VotingSystem ideas={ideas} maxVotes={3} onVote={handleVote} />
       <div className="row">
         <div className="col-sm-6">
-          <p>You have {votes.length} votes remaining.</p>
+          <p>You have {3 - votes.length} votes remaining.</p>
         </div>
         <div className="col-sm-6">
           <p className="text-right">
