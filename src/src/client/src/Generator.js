@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import Member from "./Member"
+import VotingSystem from "./VotingSystem"
 
 function Generator() {
   const [numMembers, setNumMembers] = useState(0);
   const [memberInfo, setMemberInfo] = useState([]);
   const [projectDescription, setProjectDescription] = useState('');
   const [generatedIdeas, setGeneratedIdeas] = useState([])
+
+  const [ideas, setIdeas] = useState([
+    { id: 1, name: 'Idea 1' },
+    { id: 2, name: 'Idea 2' },
+    { id: 3, name: 'Idea 3' },
+    { id: 4, name: 'Idea 4' },
+    { id: 5, name: 'Idea 5' },
+  ]);
+  const [votes, setVotes] = useState([]);
+
+  const handleVote = (selectedVotes) => {
+    setVotes(selectedVotes);
+  };
 
   const options = [
     {value: 1, label: "1"},
@@ -74,7 +88,7 @@ function Generator() {
   .catch(error => {
     console.error('Error sending member info to server:', error);
   });
-  
+
 
   return (
     <div>
@@ -88,7 +102,7 @@ function Generator() {
       <p class="text-start">Select number of members:</p>
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Members: {getNumMembersDisplay()} 
+          Members: {getNumMembersDisplay()}
         </button>
         <ul class="dropdown-menu">
           {options.map((option) => (
@@ -102,10 +116,27 @@ function Generator() {
         {memberInputs}
       </div>
       <button type="button" class="btn btn-primary" onClick={handleSubmitInfo}>Submit Info</button>
-            
+
       {generatedIdeas.map((idea, index) => (
         <h2 key={index}>{idea}</h2>
       ))}
+
+      <div className="container my-4">
+      <h1 className="text-center">Generated Ideas</h1>
+      <VotingSystem ideas={ideas} maxVotes={3} onVote={handleVote} />
+      <div className="row">
+        <div className="col-sm-6">
+          <p>You have {votes.length} votes remaining.</p>
+        </div>
+        <div className="col-sm-6">
+          <p className="text-right">
+            You have voted for:{' '}
+            {votes.map((vote) => `Idea ${vote}`).join(', ')}
+          </p>
+        </div>
+      </div>
+    </div>
+
     </div>
   )
 }
