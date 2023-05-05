@@ -27,12 +27,13 @@ class VotingSystem:
         print("\nVoting Results:")
         for index, idea in enumerate(self.generator.ideas, start=1):
             print(f"{index}. {idea.title} - {self.votes[index - 1]} votes")
-    
+
     def DisplayWinner(self):
         winner_index = self.votes.index(max(self.votes))
         winning_idea = self.generator.ideas[winner_index]
         print("\nWinning Idea:")
         print(f"{winner_index + 1}. {winning_idea}")
+        return(f"{winner_index + 1}. {winning_idea}")
 
 
 
@@ -63,7 +64,7 @@ if __name__ == '__main__':
         5. Online Shopping Analysis: Using a dataset of online shopping transactions, create a technical report analyzing the trends in online shopping. Gilberto can use his C++ and data structure skills to analyze the data, while Minna can use her web design skills to create a visually appealing report.
     ''
     '''
-    
+
     fooGenerator.Generate()
     fooGenerator.ParseIdeas()
 
