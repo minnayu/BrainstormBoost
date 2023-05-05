@@ -80,7 +80,7 @@ function Generator() {
     }
     setIsLoading(false);
   }
-  
+
   const memberInputs = Array.from({length: numMembers}, (_, i) => (
     <Member
       key={i}
@@ -95,6 +95,28 @@ function Generator() {
       }}
     />
   ));
+
+  const renderVotingSystem = (index) => (
+    <div key={index} className="container my-4">
+      <h1 className="text-center">Voting System for Member {index + 1}</h1>
+      <VotingSystem ideas={ideas} maxVotes={3} onVote={handleVote} numMemberss={numMembers} />
+      <div className="row">
+        <div className="col-sm-6">
+          <p>You have {3 - votes.length} votes remaining.</p>
+        </div>
+        <div className="col-sm-6">
+          <p className="text-right">
+            You have voted for:{' '}
+            {votes.map((vote) => `Idea ${vote}`).join(', ')}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
+  const votingSystems = Array.from({ length: numMembers }, (_, i) => i).map(
+     renderVotingSystem
+   );
 
   return (
     <div>
@@ -124,24 +146,9 @@ function Generator() {
       <button type="button" class="btn btn-primary" onClick={handleSubmitInfo}>Submit Info</button>
 
       <div className="container my-4">
-      <h1 className="text-center">Generated Ideas</h1>
 
-      {isLoading ? (
-        <p>Loading ideas...</p>
-      ) : (
-        <VotingSystem ideas={ideas} maxVotes={3} onVote={handleVote} />
-      )}
-
-      <div className="row">
-        <div className="col-sm-6">
-          <p>You have {3 - votes.length} votes remaining.</p>
-        </div>
-        <div className="col-sm-6">
-          <p className="text-right">
-            You have voted for:{' '}
-            {votes.map((vote) => `Idea ${vote}`).join(', ')}
-          </p>
-        </div>
+      <div class="container-sm" class="d-flex p-2 grid gap-3 flex-wrap">
+        {votingSystems}
       </div>
     </div>
 
