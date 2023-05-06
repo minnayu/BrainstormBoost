@@ -3,7 +3,7 @@ import React from "react";
 function About() {
     return (
         <div>
-            <h1 class="display-2 text-center">Meet the Team</h1>
+            <h1 class="display-4 text-center">Meet the Team</h1>
             <div class="d-flex p-2 justify-content-evenly">
                 <div class="card" style={{width: "18rem "}}>
                     <img src="https://media.licdn.com/dms/image/C4E03AQG3pw5TF6KKiA/profile-displayphoto-shrink_400_400/0/1516783050633?e=1688601600&v=beta&t=aDNXg3Qls1yNUIL6_8O9O0HVxqnh5Uwc8qOHXmbwz9c" class="card-img-top" alt="Gilberto Arellano smiling and wearing a bow tie"/>
