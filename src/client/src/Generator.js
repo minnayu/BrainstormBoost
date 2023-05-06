@@ -72,13 +72,13 @@ function Generator() {
         setIdeas(
           data.ideas.map((idea, index) => ({ id: index + 1, name: idea.title, description: idea.description })),
         );
+        setIsLoading(false);
       } else {
         console.error('Error sending member info to server');
       }
     } catch (error) {
       console.error('Error sending member info to server:', error);
     }
-    setIsLoading(false);
   }
 
   const memberInputs = Array.from({length: numMembers}, (_, i) => (
@@ -98,8 +98,8 @@ function Generator() {
 
   const renderVotingSystem = (index) => (
     <div key={index} className="container my-4">
-      <h1 className="text-center">Voting System for Member {index + 1}</h1>
-      <VotingSystem ideas={ideas} maxVotes={3} onVote={handleVote} numMemberss={numMembers} />
+      <h1 className="text-center">Member {index + 1} Voting</h1>
+      <VotingSystem ideas={ideas} maxVotes={3} onVote={handleVote} numMembers={numMembers} />
       <div className="row">
         <div className="col-sm-6">
           <p>You have {3 - votes.length} votes remaining.</p>
@@ -107,7 +107,7 @@ function Generator() {
         <div className="col-sm-6">
           <p className="text-right">
             You have voted for:{' '}
-            {votes.map((vote) => `Idea ${vote}`).join(', ')}
+            {votes.map((vote) => `${generatedIdeas[vote-1].title}`).join(', ')}
           </p>
         </div>
       </div>
@@ -120,14 +120,14 @@ function Generator() {
 
   return (
     <div>
-      <h1 class="text-center">Project Generator</h1>
+      <h1 class="text-center display-4">Project Generator</h1>
       <div class="p-2">
         <div class="form-floating">
           <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{height: "100px"}} value={projectDescription} onChange={(e) => setProjectDescription(e.target.value)}></textarea>
           <label for="floatingTextarea2">Project Description</label>
         </div>
       </div>
-      <p class="text-start">Select number of members:</p>
+      <p class="text-start lead"><strong>Select number of members:</strong></p>
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           Members: {getNumMembersDisplay()}
@@ -148,7 +148,11 @@ function Generator() {
       <div className="container my-4">
 
       <div class="container-sm" class="d-flex p-2 grid gap-3 flex-wrap">
-        {votingSystems}
+        { isLoading ? (
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          ) : votingSystems}
       </div>
     </div>
 

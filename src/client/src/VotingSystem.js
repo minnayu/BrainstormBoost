@@ -42,7 +42,7 @@ function VotingSystem({ ideas, maxVotes, onVote, numMembers }) {
             ideas.map((idea) => (
               <li key={idea.id} className="list-group-item">
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-info"
                   disabled={votes.length >= maxVotes || votes.includes(idea.id)}
                   onClick={() => handleVote(idea.id)}
                 >
