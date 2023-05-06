@@ -98,14 +98,14 @@ function Generator() {
 
   const renderVotingSystem = (index) => (
     <div key={index} className="container my-4">
-      <h1 className="text-center">Member {index + 1} Voting</h1>
+      <h1 className="text-center display-5">Member {index + 1} Voting</h1>
       <VotingSystem ideas={ideas} maxVotes={3} onVote={handleVote} numMembers={numMembers} />
       <div className="row">
         <div className="col-sm-6">
-          <p>You have {3 - votes.length} votes remaining.</p>
+          <p className="lead">You have {3 - votes.length} votes remaining.</p>
         </div>
         <div className="col-sm-6">
-          <p className="text-right">
+          <p className="text-right lead">
             You have voted for:{' '}
             {votes.map((vote) => `${generatedIdeas[vote-1].title}`).join(', ')}
           </p>

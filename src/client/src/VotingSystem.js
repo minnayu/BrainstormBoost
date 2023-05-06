@@ -34,7 +34,7 @@ function VotingSystem({ ideas, maxVotes, onVote, numMembers }) {
   return (
     <div className="card">
       <div className="card-header bg-secondary text-white">
-        <h2>Vote for your favorite ideas ({maxVotes} votes)</h2>
+        <h2 className="display-6">Vote for your favorite ideas ({maxVotes} votes)</h2>
       </div>
       <div className="card-body">
         <ul className="list-group">
@@ -48,7 +48,7 @@ function VotingSystem({ ideas, maxVotes, onVote, numMembers }) {
                 >
                   {idea.name}
                 </button>
-                <p>{idea.description}</p>
+                <p className="lead">{idea.description}</p>
               </li>
             ))}
         </ul>
