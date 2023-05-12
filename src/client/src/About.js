@@ -9,7 +9,7 @@ function About() {
                     <img src="https://media.licdn.com/dms/image/C4E03AQG3pw5TF6KKiA/profile-displayphoto-shrink_400_400/0/1516783050633?e=1688601600&v=beta&t=aDNXg3Qls1yNUIL6_8O9O0HVxqnh5Uwc8qOHXmbwz9c" class="card-img-top" alt="Gilberto Arellano smiling and wearing a bow tie"/>
                     <div class="card-body">
                         <h5 class="mb-2 lead"><strong>Gilberto Arellano</strong></h5>
-                        <p class="text-muted lead">Gilberto description</p>
+                        <p class="text-muted lead">Chapman University 24' BS: Software Engineering, Minor: Analytics</p>
                     </div>
                     <div class="card-body d-flex justify-content-evenly">
                         <a href="https://www.linkedin.com/in/gilbertoarellano/" target="_blank" class="fa fa-linkedin"></a>
